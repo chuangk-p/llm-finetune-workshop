@@ -8,9 +8,10 @@
 #SBATCH -J pre-tokenizer                        # Specify job name
 #SBATCH -A ltxxxxxx                             # Specify project name
 #SBATCH --output=../logs/pre-tokenized.out        # Output file
+#SBATCH --reservation=thaisc_311
 
 export PROJECT_PATH="" #YOUR PROJECT PATH
-export CUDA_HOME="/opt/nvidia/hpc_sdk/Linux_x86_64/23.3/cuda/11.8"
+export CUDA_HOME="/opt/nvidia/hpc_sdk/Linux_x86_64/24.11/cuda/12.6"
 
 export HF_DATASETS_CACHE="$PROJECT_PATH/.cache"
 export HF_HOME="$PROJECT_PATH/.cache"
@@ -39,11 +40,10 @@ echo "THEID (Node Rank): $THEID"
 echo "SLURM_PROCID: $SLURM_PROCID"
 
 
-module purge
-module load cpe-cuda/23.09
-module load gcc/10.3.0
-module load cuda/11.8
-module load Mamba/23.11.0-0
+ml purge
+ml cuda
+ml gcc
+ml Mamba
 
 conda deactivate
 conda activate "$PROJECT_PATH/env-list/env"
