@@ -1,10 +1,9 @@
 #!/bin/bash
 
-module purge
-module load cpe-cuda/23.09
-module load gcc/10.3.0
-module load cuda/11.8
-module load Mamba/23.11.0-0
+ml purge
+ml cuda
+ml gcc
+ml Mamba
 
 export PROJECT_PATH="" #YOUR PROJECT PATH
 
